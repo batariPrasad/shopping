@@ -3,6 +3,13 @@ import MyDashboard from "./dashboard";
 import Manageproduct from "./productlist";
 import NewProduct from "./newproduct";
 import MyOrder from "./order";
+
+const sellername = localStorage.getItem("sellername")
+const logout = ()=>{
+    localStorage.clear()
+    window.location.href="/";
+
+}
 const SellerModule = () => {
     return (
         <HashRouter>
@@ -16,7 +23,7 @@ const SellerModule = () => {
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
                         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li className="nav-item me-4">
-                                <Link className="nav-link active" to="/"> <i className="fa fa-cogs"> </i> DashBoard </Link>
+                                <Link className="nav-link active" to="/dashboard"> <i className="fa fa-cogs"> </i> DashBoard </Link>
                             </li>
                             <li className="nav-item me-4">
                                 <Link className="nav-link active" to="/inventory"> <i className="fa fa-database"> </i> Inventary </Link>
@@ -28,9 +35,10 @@ const SellerModule = () => {
                                 <Link className="nav-link active" to="/order"> <i className="fa fa-headset"> </i> Manage Order </Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link text-warning" onClick={logout}> 
-                                Welcome -  {localStorage.getItem('sellername')}  - <i className="fa fa-power-off"> </i> Logout </Link>
-                            </li>
+                                {sellername? <Link className="nav-link text-warning" onClick={logout}> 
+                                Welcome -  {sellername}  - <i className="fa fa-power-off"> </i> Logout </Link>
+                           :<Link to="/login"> Login </Link>}
+                                </li>
                         </ul>
                     </div>
                 </div>
@@ -38,7 +46,7 @@ const SellerModule = () => {
 
 
             <Routes>
-                <Route  path="/" element={<MyDashboard />} />
+                <Route  path="/dashboard" element={<MyDashboard />} />
                 <Route exact path="/inventory" element={<Manageproduct />} />
                 <Route exact path="/new-inventory" element={<NewProduct />} />
                 <Route exact path="/order" element={<MyOrder />} />
@@ -49,8 +57,3 @@ const SellerModule = () => {
 }
 
 export default SellerModule;
-const logout = ()=>{
-    localStorage.clear()
-    window.location.href="/#/login";
-    window.location.reload()
-}

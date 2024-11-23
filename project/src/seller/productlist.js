@@ -47,8 +47,14 @@ const MyProduct = () => {
     function handlePageClick({ selected: selectedPage }) {
         setCurrentPage(selectedPage)
     }
+    
+    const filteredProducts = allproduct.filter(product =>
+        product.pname.toLowerCase().includes(keyword.toLowerCase()) ||
+        product.pprice.toString().includes(keyword)
+    );
     const offset = currentPage * PER_PAGE;
-    const pageCount = Math.ceil(allproduct.length / PER_PAGE);
+    const pageCount = Math.ceil(filteredProducts.length / PER_PAGE);
+    
 
     return (
         <div className="container mt-4">
@@ -81,8 +87,8 @@ const MyProduct = () => {
                         </thead>
                         <tbody>
                             {
-                                allproduct.slice(offset, offset + PER_PAGE).map((product, index) => {
-                                    if (product.pname.toLowerCase().match(keyword.toLowerCase()) || product.pprice.toString().match(keyword))
+                                filteredProducts.slice(offset, offset + PER_PAGE).map((product, index) => {
+                                    // if (product.pname.toLowerCase().match(keyword.toLowerCase()) || product.pprice.toString().match(keyword))
                                         return (
                                             <tr key={index}>
                                                 <td> {product.id}</td>

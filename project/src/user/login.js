@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 const MyLogin = () => {
     let [email, setemail] = useState("")
     let [password, setpassword] = useState("")
@@ -79,7 +80,9 @@ const MyLogin = () => {
                            </div>
                         </div>
                         <div className="card-footer text-center fs-5">
-                            <button disabled= {myBtn} className="btn btn-danger " onClick={loginCheck} > Login <i className="fa-solid fa-circle-arrow-right "></i> </button>
+                            <button disabled= {myBtn} className="btn btn-danger " onClick={loginCheck} > 
+                                <Link to="/dashboard" className='text-decoration-none'> Login  </Link>
+                                 <i className="fa-solid fa-circle-arrow-right "></i> </button>
                         </div>
                     </div>
 

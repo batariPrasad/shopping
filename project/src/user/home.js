@@ -3,6 +3,7 @@ import MyCart from "./cart";
 import { HashRouter, Routes, Route, Link } from "react-router-dom";
 
 import ReactPaginate from "react-paginate";
+// import Carousel from "../seller/carousel";
 
 const MyHome = () => {
   let [allproduct, setproduct] = useState([])
@@ -94,86 +95,9 @@ const MyHome = () => {
 
       <div>
 
+{/* <Carousel/> */}
 
-
-        <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          </div>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="c1.png" height="400" width="100%" />
-              <div class="container">
-                <div class="carousel-caption text-start">
-                  <h1>Example headline.</h1>
-                  <p class="opacity-75">Some representative placeholder content for the first slide of the carousel.</p>
-                  <p>
-                  
-                  {/* <marquee width="40%" direction="up" height="200px" behavior="scroll" scrollamount="3">
-                                  <div className="container mt-5">
-                      <div className="row">
-                        <div className="col-lg-4">
-                          <div className="card">
-                            <div className="card-harder text-center text-danger mt-3">   </div>
-                            <div className="card-body">
-                              <Link className=" text-danger" to="/cart"> <img src="6.png" width={50} height={80} /> </Link>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="col-lg-4">
-                          <div className="card">
-                            <div className="card-body">  <img src="6.png" className="img-fluid" /> </div>
-                            <Link >   </Link>
-                          </div>
-                        </div>
-                        <div className="col-lg-4">
-                          <div className="card">
-                            <div className="card-body">  <img src="8.png" className="img-fluid" /> </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <marquee/> */}
- 
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img src="c2.png" height="400" width="100%" />
-              <div class="container">
-                <div class="carousel-caption">
-                  <h1>Another example headline.</h1>
-                  <p>Some representative placeholder content for the second slide of the carousel.</p>
-                  <p><a class="btn btn-lg btn-primary" href="#" data-bs-toggle="modal" data-bs-target="#contact">Learn more</a></p>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img src="c3.png" height="400" width="100%" />
-              <div class="container">
-                <div class="carousel-caption text-end">
-                  <h1>One more for good measure.</h1>
-                  <p>   </p>
-                  <p><a class="btn btn-lg btn-primary" href="#" data-bs-toggle="modal" data-bs-target="#contact">Browse gallery</a></p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-
-
-      </div>
+</div>
 
       <div className="row mt-5">
 

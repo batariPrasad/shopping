@@ -1,0 +1,46 @@
+########## Project Guide ########
+    Author : venkata prasad
+    Mobile : 7095949481
+    Publish Date : 03-11-2024
+
+########## About Project ########
+    React E-Commerce Shopping Application (Cash on Delivery)
+    Technologies
+        Frontend
+            1. HTML
+            2. CSS 
+            
+            3. Bootstrap 5
+            4. React (JSX)
+        Backend 
+            1. JSON-SERVER (mock api)
+    
+########## How To Setup and Run The Project ##########
+    1. Download React Project Source Code : https://github.com/cybotrix/live-project/archive/refs/heads/main.zip
+    2. Download Api Source Code : https://github.com/cybotrix/api/archive/refs/heads/main.zip
+
+Note : Steps to setup the project 
+    1. download source code from above url 
+    2. unzip/extract both the folder 
+    3. install nodejs 18+ version in your system
+    4. install react development environment using bellow command 
+        npm install -g create-react-app 
+
+    5. install JSON-SERVER to run api 
+        npm install -g json-server 
+    6. start the json-server using bellow command 
+        a. open cmd in api folder (that u have extracted) and run 
+
+            json-server --watch data.json --port 1234 
+        
+    7. start react development server 
+        a. open cmd in react project folder that is "project1" and run this command 
+            npm start 
+
+        Note : You can browser http://localhost:3000
+    
+    Thanks For Your Time to see my project. 
+    I hope for positive response from your side 
+     venkata prasad(7095949481)
+######################################################################################
+
