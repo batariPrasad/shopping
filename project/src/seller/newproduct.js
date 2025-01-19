@@ -67,8 +67,6 @@ let[detailserror,setdetailserror]=useState("")
                 
             })
          }
-
-      
     }
 
     return (
