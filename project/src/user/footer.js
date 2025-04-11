@@ -9,9 +9,7 @@ return(
                     <div>
                         asdf asdf adf asdf asdf afad dfa adsf asdf asdf asdf df asdf asdf asdf asdf
                         asdf asdf adf asdf asdf afad dfa adsf asdf asdf asdf df asdf asdf asdf asdf
-                        asdf asdf adf asdf asdf afad dfa adsf asdf asdf asdf df asdf asdf asdf asdf
-                        asdf asdf adf asdf asdf afad dfa adsf asdf asdf asdf df asdf asdf asdf asdf
-                        asdf asdf adf asdf asdf afad dfa adsf asdf asdf asdf df asdf asdf asdf asdf
+                       
                     </div>
                 </div>
                 <div className="col-xl-4">
@@ -23,7 +21,7 @@ return(
                 <div className="col-xl-3">
                     <h5 className="text-warning"> In Social Media </h5>
                     <div> <i className="fab fa-facebook"> </i> www.facebook.com</div>
-                    <div> <i className="fab fa-twitter"> </i> www.twitter.com</div>
+                    
                     <div> <i className="fab fa-instagram"> </i> www.instagram.com</div>
                     <div> <i className="fab fa-linkedin"> </i> www.linkedin.com</div>
                 </div>

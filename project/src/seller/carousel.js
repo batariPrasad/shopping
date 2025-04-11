@@ -1,12 +1,9 @@
-
 import Slider from 'react-slick';  // Import Slider from react-slick
 import 'slick-carousel/slick/slick.css';  // Import slick-carousel styles
 import 'slick-carousel/slick/slick-theme.css'; // Import slick-carousel theme styles
-// import './App.css'; // Import your custom styles
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
-
+import { Card, Button } from 'react-bootstrap';
 
 function Carousel() {
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("token") !== null);
@@ -14,14 +11,34 @@ function Carousel() {
   // Define settings for the thumbnail carousel with pagination dots and RTL support
   const thumbnailSliderSettings = {
     dots: true,               // Enable pagination dots
-    infinite: true,           // Loop the slides infinitely
-    speed: 1000,              // Transition speed
-    slidesToShow: 3,          // Show 3 thumbnails at a time
-    slidesToScroll: 2,        // Scroll two thumbnails at a time
-    focusOnSelect: true,      // Enable click to select thumbnails
-    autoplay: true,           // Enable autoplay for thumbnail carousel
-    autoplaySpeed: 1500,      // Speed of autoplay for thumbnail carousel
+    slidesToShow: 4,          // Show 4 thumbnails at a time by default
     rtl: true,                // Enable RTL (right-to-left) direction
+    responsive: [
+      {
+        breakpoint: 1200, // For screen widths 1200px and above
+        settings: {
+          slidesToShow: 4,  // Show 4 thumbnails at a time
+        },
+      },
+      {
+        breakpoint: 992, // For screen widths 992px and above (tablet size)
+        settings: {
+          slidesToShow: 3,  // Show 3 thumbnails at a time
+        },
+      },
+      {
+        breakpoint: 768, // For screen widths 768px and above (smaller tablet size)
+        settings: {
+          slidesToShow: 2,  // Show 2 thumbnails at a time
+        },
+      },
+      {
+        breakpoint: 576, // For screen widths 576px and above (mobile size)
+        settings: {
+          slidesToShow: 1,  // Show 1 thumbnail at a time
+        },
+      },
+    ],
   };
 
   // Reference for the thumbnail slider
@@ -37,7 +54,6 @@ function Carousel() {
 
   return (
     <>
-
       <div id="myCarousel" className="carousel slide mb-6" data-bs-ride="carousel">
         {/* Carousel Indicators */}
         <div className="carousel-indicators">
@@ -50,7 +66,7 @@ function Carousel() {
         <div className="carousel-inner">
           {/* Slide 1 */}
           <div className="carousel-item active">
-            <img src="1.png" className="d-block w-100" height="400" alt="Slide 1" />
+            <img src="car1.png" className="d-block w-100" height="400" alt="Slide 1" />
             <div className="carousel-caption d-none d-md-block">
               <h1>Example headline.</h1>
               <p className="opacity-75">Some representative placeholder content for the first slide of the carousel.</p>
@@ -60,7 +76,7 @@ function Carousel() {
 
           {/* Slide 2 */}
           <div className="carousel-item">
-            <img src="2.png" className="d-block w-100" height="400" alt="Slide 2" />
+            <img src="car2.png" className="d-block w-100" height="400" alt="Slide 2" />
             <div className="carousel-caption d-none d-md-block">
               <h1>Another example headline.</h1>
               <p>Some representative placeholder content for the second slide of the carousel.</p>
@@ -70,7 +86,7 @@ function Carousel() {
 
           {/* Slide 3 */}
           <div className="carousel-item">
-            <img src="3.png" className="d-block w-100" height="400" alt="Slide 3" />
+            <img src="car3.png" className="d-block w-100" height="400" alt="Slide 3" />
             <div className="carousel-caption d-none d-md-block text-end">
               <h1>One more for good measure.</h1>
               <p>Some representative placeholder content for the third slide of this carousel.</p>
@@ -91,16 +107,20 @@ function Carousel() {
       </div>
 
       {/* Thumbnail Carousel for Syncing with Pagination */}
-      <section className="thumbnail-carousel-container" style={{ direction: 'rtl' }}>
+      <section className="thumbnail-carousel-container mb-5 mt-5" style={{ direction: 'rtl' }}>
         <Slider
           {...thumbnailSliderSettings}
           ref={thumbnailSliderRef}
         >
           <div>
-            <img src="1.png" alt="Thumbnail 1" />
+            <Link to="/electronics">
+              <img src="4.png" alt="Thumbnail 3" />
+            </Link>
           </div>
           <div>
-            <img src="2.png" alt="Thumbnail 2" />
+            <Link to="/grocery">
+              <img src="grocerysymbol2.png" alt="Thumbnail 2" />
+            </Link>
           </div>
           <div>
             <img src="1.png" alt="Thumbnail 3" />
@@ -108,93 +128,52 @@ function Carousel() {
           <div>
             <img src="2.png" alt="Thumbnail 4" />
           </div>
+        </Slider>
+        <Slider
+          {...thumbnailSliderSettings}
+          ref={thumbnailSliderRef}
+          style={{
+            backgroundImage: 'url(bg1.png)',
+            backgroundSize: 'cover',
+            height: '100%',
+            marginTop: '10px',
+            marginBottom: '15px',
+            paddingLeft: '20px',
+            paddingRight: '20px',
+          }}
+          className='mt-5'
+        >
           <div>
-            <img src="1.png" alt="Thumbnail 5" />
+            <Link to="/electronics">
+              <img src="4.png" alt="Thumbnail 3" />
+            </Link>
           </div>
           <div>
-            <img src="2.png" alt="Thumbnail 6" />
+            <Link to="/grocery">
+              <img src="grocerysymbol2.png" alt="Thumbnail 2" />
+            </Link>
           </div>
           <div>
-            <img src="1.png" alt="Thumbnail 7" />
+            <img src="1.png" alt="Thumbnail 3" />
           </div>
           <div>
-            <img src="2.png" alt="Thumbnail 8" />
+            <img src="2.png" alt="Thumbnail 4" />
           </div>
-          <div>
-            <img src="1.png" alt="Thumbnail 9" />
+          <div style={{
+            position: 'absolute',
+            bottom: '0',
+            width: '100%',
+            background: 'rgba(0, 0, 0, 0.5)',
+            color: 'white',
+            padding: '10px',
+            textAlign: 'center',
+            fontSize: '16px',
+          }}>
+            <marquee behavior="scroll" direction="left">The offer is live, do shopping more!</marquee>
           </div>
         </Slider>
       </section>
-
-      <div className='row mt-5'>
-        {/* <div className='col-lg-2'></div> */}
-        <div className='col-lg-3'>
-        <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="bangalore.png" />
-        <Card.Body>
-          <Card.Title>
-            <Link to='/bangalore' className='text-decoration-none' >  bangalore  </Link>
-          </Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <div className='text-center'> <Button variant="primary" className='text-center'> <Link to='/bangalore' className='text-decoration-none text-danger ' >  bangalore  </Link>   </Button></div>
-        </Card.Body>
-      </Card>
-
-        </div>
-        <div className='col-lg-3'>
-        <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="bangalore.png" />
-        <Card.Body>
-          <Card.Title>
-            <Link to='/bangalore' className='text-decoration-none' >  bangalore  </Link>
-          </Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <div className='text-center'> <Button variant="primary" className='text-center'> <Link to='/bangalore' className='text-decoration-none text-danger ' >  bangalore  </Link>   </Button></div>
-        </Card.Body>
-      </Card>
-
-        </div>
-        <div className='col-lg-3'>
-        <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="bangalore.png" />
-        <Card.Body>
-          <Card.Title>
-            <Link to='/hyderabad' className='text-decoration-none' >  Hyderabad  </Link>
-          </Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <div className='text-center'> <Button variant="primary" className='text-center'> <Link to='/hyderabad' className='text-decoration-none text-danger ' >  Hyderabad  </Link>   </Button></div>
-        </Card.Body>
-      </Card>
-
-        </div>
-        <div className='col-lg-3'>
-        <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="bangalore.png" />
-        <Card.Body>
-          <Card.Title>
-            <Link to='/bangalore' className='text-decoration-none' >  bangalore  </Link>
-          </Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <div className='text-center'> <Button variant="primary" className='text-center'> <Link to='/bangalore' className='text-decoration-none text-danger ' >  bangalore  </Link>   </Button></div>
-        </Card.Body>
-      </Card>
-
-        </div>
-      </div>
     </>
-
   );
 }
 

@@ -5,6 +5,8 @@ import MyHeader from "./userheader";
 import MyCart from "./cart";
 import MyLogin from "./login";
 import CreateAccount from "./signup";
+import Electronics from "./electroincs";
+import Grocerys from "./grocery";
 const UserModule = () => {
     return (
         <HashRouter>
@@ -14,6 +16,8 @@ const UserModule = () => {
                 <Route exact path="/cart" element={<MyCart/>}/>
                 <Route exact path="/login" element={<MyLogin/>}/>
                 <Route exact path="/signup" element={<CreateAccount/>}/>
+                <Route exact path="/electronics" element={<Electronics/>}/>
+                <Route exact path="/grocery" element={<Grocerys/>}/>
             </Routes>  
 
             <MyFooter />

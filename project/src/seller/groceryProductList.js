@@ -1,15 +1,15 @@
-import { useState, useEffect } from "react"
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import Carousel from "./carousel";
-const MyProduct = () => {
-    let [allproduct, setproduct] = useState([])
 
-    let [ordericon, seticon] = useState("fa fa-arrow-up")
+const GroceryProductList = () => {
+    let [allproduct, setproduct] = useState([]);
+
+    let [ordericon, seticon] = useState("fa fa-arrow-up");
 
     let [order, setorder] = useState("asc");
     const getproduct = () => {
-        fetch("http://localhost:1234/productapi")
+        fetch("http://localhost:1234/groceryapi")
             .then(response => response.json())
             .then(proarray => {
 
@@ -17,59 +17,51 @@ const MyProduct = () => {
                     proarray.sort((a, b) => a.pprice - b.pprice);
                     setproduct(proarray);
                     setorder("desc");
-                    seticon("fa fa-arrow-up")
+                    seticon("fa fa-arrow-up");
                 } else {
                     proarray.sort((a, b) => b.pprice - a.pprice);
                     setproduct(proarray);
                     setorder("asc");
-                    seticon("fa fa-arrow-down")
+                    seticon("fa fa-arrow-down");
                 }
-
-            })
-    }
+            });
+    };
+    
     const delpro = (pid) => {
-        let url = "http://localhost:1234/productapi/" + pid
-        let postdata = { method: 'delete' }
+        let url = "http://localhost:1234/groceryapi/" + pid;
+        let postdata = { method: 'delete' };
         fetch(url, postdata)
             .then(response => response.json())
             .then(pinfo => {
-                alert(pinfo.pname + " Deleted Successfully")
-                getproduct()
-            })
+                alert(pinfo.pname + " Deleted Successfully");
+                getproduct();
+            });
+    };
 
-    }
     useEffect(() => {
-        getproduct()
+        getproduct();
     }, []);
 
     let [keyword, setkeyword] = useState("");
     const PER_PAGE = 5; //displays 5 items/records per page
     const [currentPage, setCurrentPage] = useState(0);
     function handlePageClick({ selected: selectedPage }) {
-        setCurrentPage(selectedPage)
+        setCurrentPage(selectedPage);
     }
-    
+
     const filteredProducts = allproduct.filter(product =>
-        product.pname.toLowerCase().includes(keyword.toLowerCase()) ||
-        product.pprice.toString().includes(keyword)
+        (product.pname && product.pname.toLowerCase().includes(keyword.toLowerCase())) ||
+        (product.pprice && product.pprice.toString().includes(keyword))
     );
+
     const offset = currentPage * PER_PAGE;
     const pageCount = Math.ceil(filteredProducts.length / PER_PAGE);
-    
 
     return (
         <div className="container mt-4">
-            <div className="text-info">
-                 <Link className="nav-link active" to="/electroniclist"> <i className="fa fa-plus"> </i> ELELIST </Link>
-                                          
-            </div>
-            <div className="text-info">
-                 <Link className="nav-link active" to="/groceryList"> <i className="fa fa-plus"> </i> KILOLIST </Link>
-                                          
-            </div>
             <div className="row">
                 <div className="col-lg-9">
-                    <h3 className="text-center text-info"> {allproduct.length} : Product inventory</h3>
+                    <h3 className="text-center text-info"> {allproduct.length} : electronic Product inventory</h3>
                 </div>
                 <div className="col-lg-3">
                     <input type="search"
@@ -79,7 +71,6 @@ const MyProduct = () => {
                     />
                 </div>
             </div>
-
 
             <div className="row">
                 <div className="col-lg-12 text-center">
@@ -97,22 +88,21 @@ const MyProduct = () => {
                         <tbody>
                             {
                                 filteredProducts.slice(offset, offset + PER_PAGE).map((product, index) => {
-                                    // if (product.pname.toLowerCase().match(keyword.toLowerCase()) || product.pprice.toString().match(keyword))
-                                        return (
-                                            <tr key={index}>
-                                                <td> {product.id}</td>
-                                                <td> {product.pname}</td>
-                                                <td>{product.pprice}</td>
-                                                <td> {product.pdetails}</td>
-                                                <td> <img src={product.photo} height={50} width={70} />  </td>
-                                                <td>
-                                                    <button className="btn btn-danger btn-sm"
-                                                        onClick={delpro.bind(this, product.id)}>
-                                                        <i className="fa fa-trash " >  </i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        )
+                                    return (
+                                        <tr key={index}>
+                                            <td> {product.id}</td>
+                                            <td> {product.pname}</td>
+                                            <td>{product.pprice}</td>
+                                            <td> {product.pdetails}</td>
+                                            <td> <img src={product.photo} height={50} width={70} />  </td>
+                                            <td>
+                                                <button className="btn btn-danger btn-sm"
+                                                    onClick={delpro.bind(this, product.id)}>
+                                                    <i className="fa fa-trash " >  </i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    );
                                 })
                             }
                         </tbody>
@@ -139,11 +129,10 @@ const MyProduct = () => {
                             activeClassName={"active primary"}
                         />
                     </div>
-
-
                 </div>
             </div>
         </div>
-    )
-}
-export default MyProduct;
+    );
+};
+
+export default GroceryProductList;

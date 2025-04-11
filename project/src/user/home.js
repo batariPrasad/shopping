@@ -3,7 +3,9 @@ import MyCart from "./cart";
 import { HashRouter, Routes, Route, Link } from "react-router-dom";
 
 import ReactPaginate from "react-paginate";
-// import Carousel from "../seller/carousel";
+// import { Carousel } from "react-bootstrap";
+import Carousel from "../seller/carousel";
+import ProductCarousel from "./ProductCarousel";
 
 const MyHome = () => {
   let [allproduct, setproduct] = useState([])
@@ -72,7 +74,9 @@ const MyHome = () => {
   const pageCount = Math.ceil(filteredProducts.length / PER_PAGE);
 
   return (
-    <div className="container mt-4">
+    <div className="container-fluid mt-4">
+      <Carousel/>
+      {/* <ProductCarousel/> */}
       <div className="row mb-4">
         <div className="col-lg-2">
         </div>

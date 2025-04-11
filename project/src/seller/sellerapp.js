@@ -3,6 +3,11 @@ import MyDashboard from "./dashboard";
 import Manageproduct from "./productlist";
 import NewProduct from "./newproduct";
 import MyOrder from "./order";
+import ElectronicProduct from "./electronicProducts";
+import ElectronicProductList from "./electronicProductList";
+
+import GroceryProduct from "./groceryProduct";
+import GroceryProductList from "./groceryProductList";
 
 const sellername = localStorage.getItem("sellername")
 const logout = ()=>{
@@ -31,6 +36,12 @@ const SellerModule = () => {
                             <li className="nav-item me-4">
                                 <Link className="nav-link active" to="/new-inventory"> <i className="fa fa-plus"> </i> New Inventary </Link>
                             </li>
+                            {/* <li className="nav-item me-4">
+                                <Link className="nav-link active" to="/electronic-inventory"> <i className="fa fa-plus"> </i> ELE </Link>
+                            </li> */}
+                            {/* <li className="nav-item me-4">
+                                <Link className="nav-link active" to="/electroniclist"> <i className="fa fa-plus"> </i> ELELIST </Link>
+                            </li> */}
                             <li className="nav-item me-4">
                                 <Link className="nav-link active" to="/order"> <i className="fa fa-headset"> </i> Manage Order </Link>
                             </li>
@@ -49,7 +60,13 @@ const SellerModule = () => {
                 <Route  path="/dashboard" element={<MyDashboard />} />
                 <Route exact path="/inventory" element={<Manageproduct />} />
                 <Route exact path="/new-inventory" element={<NewProduct />} />
+                <Route exact path="/electronic-inventory" element={<ElectronicProduct/>} />
+                <Route exact path="/grocery-inventory" element={<GroceryProduct/>} />
+                <Route exact path="/groceryList" element={<GroceryProductList/>} />
+            
+                <Route exact path="/electroniclist" element={<ElectronicProductList/>} />
                 <Route exact path="/order" element={<MyOrder />} />
+
             </Routes>
         </HashRouter>
 
